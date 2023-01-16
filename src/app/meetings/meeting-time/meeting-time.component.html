@@ -1,0 +1,64 @@
+<div class="card">
+
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+   
+    <div class="card-body"
+         *ngIf="meetingTimes?.length">
+      
+
+      <div class="container">
+ 
+          <div class="row">  
+              <div class="list-group col-md-3"  *ngFor="let meetingTime of meetingTimes  " >
+                <button class="list-group-item list-group-item-action rounded-0"
+                 
+                [ngClass]="{'active': meetingTime?.id === selectedMeetingTime?.id}"
+                (click)="meetingTimeSelected(meetingTime)"
+                >
+                {{ meetingTime.timePart }}
+                </button> 
+                   <div> </div>     
+              </div>
+              
+            </div>
+     
+             
+           
+            
+              
+             
+      </div>
+
+     
+       
+      
+      </div>
+    </div>
+
+    
+  
+    <div class="card-footer">
+    </div>
+  
+   
+   
+  <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="errorMessage">
+    <strong>{{errorMessage}}</strong>  
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  
+  <button type="button" (click)="saveSchedule()" class="btn btn-primary" style='margin-right:16px;margin-bottom: 10px;' >Save Schedule</button>
+  <button type="button" (click)="clearAll()" class="btn btn-secondary" style='margin-right:16px;margin-bottom: 10px;' >Clear All</button>
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="scheduleMessage">
+    <strong>{{scheduleMessage}}</strong>  
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  

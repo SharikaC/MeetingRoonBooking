@@ -1,0 +1,32 @@
+<div class="card">
+
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+  
+    <div class="card-body"
+         *ngIf="meetingRooms?.length">
+      <div class="list-group">
+        <button class="list-group-item list-group-item-action rounded-0"
+                *ngFor="let meetingRoom of meetingRooms"
+                [ngClass]="{'active': meetingRoom?.id === selectedMeetingRoom?.id}"
+                (click)="meetingRoomSelected(meetingRoom)">{{ meetingRoom.meetingRoomName }}
+          
+        </button>
+      </div>
+    </div>
+
+    
+  
+    <div class="card-footer">
+      
+    </div>
+  
+  <div *ngIf="errorMessage"
+       class="alert alert-danger">
+    Error: {{ errorMessage }}
+  </div>
+ 
+  </div>
+  <hr>
+  

@@ -1,0 +1,46 @@
+<div class="card">
+
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class="card-body"
+       *ngIf="employees?.length">
+    <div class="list-group">
+      <button class="list-group-item list-group-item-action rounded-0"
+              *ngFor="let employee of employees"
+              [ngClass]="{'active': employee?.id === selectedEmployee?.id}"
+              (click)="employeeSelected(employee)">{{ employee.employeeName }} 
+        
+      </button>
+    </div>
+
+    
+     
+  </div>
+
+  
+
+  <div class="card-footer">
+    <div class="row">
+        
+    </div>
+  </div>
+</div>
+<div *ngIf="errorMessage"
+     class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>
+<hr>
+<div>
+      
+  <mat-form-field appearance="fill">
+    <mat-label>Select a date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" (dateChange)="saveSelectedDate()">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+</div>
+ 
